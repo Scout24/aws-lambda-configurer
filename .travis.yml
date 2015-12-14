@@ -1,0 +1,32 @@
+sudo: false
+language: python
+python:
+  - '2.7'
+  - '3.3'
+  - '3.4'
+  - '3.5'
+  - "pypy"
+  - "pypy3"
+before_install:
+  - git fetch --unshallow
+install:
+  - pip install pybuilder
+  - pip install coveralls
+  - pyb install_dependencies
+script: 
+  - pyb -X run_unit_tests
+after_success:
+  - coveralls --verbose
+before_deploy:
+  - pyb -v -X package
+deploy:
+  provider: pypi
+  user: xxxxxx
+  password:
+    secure: yyyyy
+  distributions: 'sdist'
+  skip_cleanup: true
+  on:
+    repo: Immobilienscout24/aws_lambda_configurer
+    branch: stable
+    python: '3.5'
