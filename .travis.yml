@@ -7,8 +7,6 @@ python:
   - '3.5'
   - "pypy"
   - "pypy3"
-before_install:
-  - git fetch --unshallow
 install:
   - pip install pybuilder
   - pip install coveralls
