@@ -20,5 +20,5 @@ deploy:
   distributions: sdist
   skip_cleanup: true
   on:
-    repo: Immobilienscout24/aws-lambda-configurer
+    repo: ImmobilienScout24/aws-lambda-configurer
     python: '2.7'
