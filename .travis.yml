@@ -27,6 +27,6 @@ deploy:
   distributions: 'sdist'
   skip_cleanup: true
   on:
-    repo: Immobilienscout24/aws_lambda_configurer
+    repo: Immobilienscout24/aws-lambda-configurer
     branch: stable
     python: '3.5'
