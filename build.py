@@ -24,7 +24,6 @@ version = '0.1.0'
 
 default_task = ['clean', 'analyze', 'package']
 
-
 @init
 def set_properties(project):
     project.build_depends_on("unittest2")
