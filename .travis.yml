@@ -21,5 +21,4 @@ deploy:
   skip_cleanup: true
   on:
     repo: Immobilienscout24/aws-lambda-configurer
-    branch: stable
-    python: '3.5'
+    python: '2.7'
