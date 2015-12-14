@@ -1,23 +1,23 @@
 sudo: false
 language: python
 python:
-  - '2.7'
+- '2.7'
 install:
-  - pip install pybuilder
-  - pip install coveralls
-  - pyb install_dependencies
-script: 
-  - pyb -X run_unit_tests
+- pip install pybuilder
+- pip install coveralls
+- pyb install_dependencies
+script:
+- pyb -X run_unit_tests
 after_success:
-  - coveralls --verbose
+- coveralls --verbose
 before_deploy:
-  - pyb -v -X package
+- pyb -v -X package
 deploy:
   provider: pypi
   user: Immobilienscout24
   password:
-    secure: yyyyy
-  distributions: 'sdist'
+    secure: fFWUFcwMo+o7xo4T50GerObeWzIbhK0gEVx/P+mTQlA6lOkr4mBJle0yuJEYkgEuLn6OyT0cdKJEVVeR83z9zjArdyukIS5+mpOlsAhnOTVx0nBbmVHNaE6G9yQtl0nXu8EFmN2CWgQ2wytitY775zVkl1m7UnYwdtaGsk7wnEsjIMrgpJ9AN1A/CMd8PRj0k+2f6NPm/O3IRxXONXM0gEVMDIOvCn3Jcj8MSLCUtIDS8k4OhjoQrg1P5ViaYLVi257qiCOGkIozPCwq+Le+B15sliVb4Nb3YLRZEMQyooi8YEJaoI+HtAd7iLn3MkcDfJSEn0jvRYQQTjjaT3ardqY/hM1dtvTYnvJSEh0FqvoTYh2X1qa58yDbIrL7GxBt01iBofQDmJjAHHvw5E0ZyxhCnK4a706KWpsLCa+fFkNg08LT3eZnS2qWcHlSA6g2WchGFC3cEwAKeG+Mei5ax1g6Qss+MbG7E5gCDgZoV0k6iI484EwcXvfp6hV1APIhNcY3uE7c9hy2ZLyi5uGE7rDVtkYtn7tszSID9QtwJEWxgiczMM/m8DXYmKUqxzbtOK4Wf9igKiuqTHaSmTNwKP1bKzPVIqvv3UGS6dlaISvygZylwaVVt1/1fsqeCejA0hYfOMk7Sj772/lO2LlV841ePudcBYUbaXrjhc8BdDY=
+  distributions: sdist
   skip_cleanup: true
   on:
     repo: Immobilienscout24/aws-lambda-configurer
