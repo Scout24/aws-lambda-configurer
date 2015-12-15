@@ -20,7 +20,7 @@ description = "aws-lambda-configurer - Resolve AWS lambda " \
 license = 'APACHE LICENSE, VERSION 2.0'
 summary = description
 url = 'https://github.com/Immobilienscout24/aws-lambda-configurer'
-version = '0.1.0'
+version = '0.1.1'
 
 default_task = ['clean', 'analyze', 'package']
 

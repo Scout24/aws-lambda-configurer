@@ -19,7 +19,7 @@ class ConfigAccessTests(unittest2.TestCase):
             })
         }
 
-        config = aws_lambda_configurer.load_config(MockContext('function-arn-name', 'function-version'))
+        config = aws_lambda_configurer.load_config(Context=MockContext('function-arn-name', 'function-version'))
         aws_lambda_mock.get_function_configuration.assert_called_once_with(FunctionName='function-arn-name',
                                                                            Qualifier='function-version')
         self.assertEquals(config, {
@@ -50,7 +50,7 @@ class ConfigAccessTests(unittest2.TestCase):
 
             })
 
-        config = aws_lambda_configurer.load_config(MockContext('function-arn-name', 'function-version'))
+        config = aws_lambda_configurer.load_config(Context=MockContext('function-arn-name', 'function-version'))
         self.assertEquals(config, {
             "abc": 123,
             "foo": "bar",
@@ -72,7 +72,7 @@ class ConfigAccessTests(unittest2.TestCase):
         }
 
         with self.assertRaises(Exception) as cm:
-            aws_lambda_configurer.load_config(MockContext('function-arn-name', 'function-version'))
+            aws_lambda_configurer.load_config(Context=MockContext('function-arn-name', 'function-version'))
 
         self.assertEqual('Description of function must contain JSON, but was "i am not a json description"',
                          cm.exception.message)
@@ -82,9 +82,15 @@ class ConfigAccessTests(unittest2.TestCase):
         aws_lambda_mock.get_function_configuration.return_value = {}
 
         with self.assertRaises(KeyError) as cm:
-            aws_lambda_configurer.load_config(MockContext('function-arn-name', 'function-version'))
+            aws_lambda_configurer.load_config(Context=MockContext('function-arn-name', 'function-version'))
 
         self.assertEqual('Description', cm.exception.message)
+
+    def test_raise_missing_args_error(self):
+        with self.assertRaises(Exception) as cm:
+            aws_lambda_configurer.load_config()
+
+        self.assertEqual("Keyword argument 'Context' missing", cm.exception.message)
 
 
 class MockContext:

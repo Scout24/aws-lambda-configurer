@@ -33,8 +33,11 @@ def _lookup(config):
     return config
 
 
-def load_config(context):
+def load_config(**kwargs):
+    if 'Context' not in kwargs:
+        raise Exception("Keyword argument 'Context' missing")
     # http://docs.aws.amazon.com/de_de/lambda/latest/dg/python-context-object.html
+    context = kwargs.get('Context')
     description = aws_lambda.get_function_configuration(
         FunctionName=context.invoked_function_arn,
         Qualifier=context.function_version
