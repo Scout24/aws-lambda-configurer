@@ -2,7 +2,7 @@
 
 # aws-lambda-configurer
 
-This package allows to configure a AWS lambda function by JSON specified in the `description` if the lambda function.
+This package allows to configure a AWS lambda function by JSON specified in the `description` of the lambda function.
 The python function `aws_lambda_configurer.load_config` is passed the lambda-function `context` [argument](http://docs.aws.amazon.com/de_de/lambda/latest/dg/python-context-object.html) 
 The result is a `dictionary` read fro the JSON configuration.   
 
