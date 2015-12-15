@@ -9,7 +9,7 @@ The result is a `dictionary` read fro the JSON configuration.
 ## Basic usage
 
 Lambda: Description
-```
+```JSON
 {"foo":"bar"}
 ```
 
@@ -32,8 +32,8 @@ During the merge all existing fields get overridden too.
 Configuration in S3 in bucket `my-bucket` as file `my-config.json`
 ```JSON
 {
-  "hello" : 123,
-  "override" : "2"
+  "hello": 123,
+  "override": "2"
 }
 ```
 
@@ -41,22 +41,22 @@ Lambda: Description
 ```JSON
 {  
   "_lookup" : {
-    "s3" : {
-      "bucket" : "my-bucket"
-      "key" : "my-config.json"
+    "s3": {
+      "bucket": "my-bucket",
+      "key": "my-config.json"
     }
   } 
-  "foo": "bar" 
-  "override" : "1"
+  "foo": "bar",
+  "override": "1"
 }
 ```
 
 The final configuration will be
 ```JSON
 {
-  "hello" : 123,
-  "foo": "bar" 
-  "override" : "2"
+  "hello": 123,
+  "foo": "bar", 
+  "override": "2"
 }
 ```
 
