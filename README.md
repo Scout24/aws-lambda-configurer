@@ -45,7 +45,7 @@ Lambda: Description
       "bucket": "my-bucket",
       "key": "my-config.json"
     }
-  } 
+  }, 
   "foo": "bar",
   "override": "1"
 }
