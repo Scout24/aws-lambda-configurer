@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/ImmobilienScout24/aws-lambda-configurer.svg?branch=master)](https://travis-ci.org/ImmobilienScout24/aws-lambda-configurer)
+[![Coverage Status](https://coveralls.io/repos/ImmobilienScout24/aws-lambda-configurer/badge.svg?branch=master&service=github)](https://coveralls.io/github/ImmobilienScout24/aws-lambda-configurer?branch=master)
 
 # aws-lambda-configurer
 

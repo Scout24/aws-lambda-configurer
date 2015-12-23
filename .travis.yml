@@ -7,7 +7,7 @@ install:
 - pip install coveralls
 - pyb install_dependencies
 script:
-- pyb -X run_unit_tests
+- pyb -X run_unit_tests analyze
 after_success:
 - coveralls --verbose
 before_deploy:
