@@ -2,9 +2,9 @@
 
 # aws-lambda-configurer
 
-This package allows to configure a AWS lambda function by JSON specified in the `description` of the lambda function.
+This package allows to configure an AWS lambda function by JSON specified in the `description` of the lambda function.
 The python function `aws_lambda_configurer.load_config` is passed the lambda-function `context` [argument](http://docs.aws.amazon.com/de_de/lambda/latest/dg/python-context-object.html) 
-The result is a `dictionary` read fro the JSON configuration.   
+The result is a `dictionary` read from the JSON configuration.
 
 ## Basic usage
 
@@ -22,9 +22,9 @@ def handler(event, context):
   
 ## External configurations 
 
-Since the lambda-description is limited to 256 chars this module supports resolving the config from external locations.
+Since the lambda-description is limited to 256 chars, this module supports resolving the config from external locations.
 To enable this, the configuration may contain a field `_lookup` which allows to define those lookups.
-Any external configuration will be merged with the default one and the `_lookup` field get removed. 
+Any external configuration will be merged with the default one and the `_lookup` field gets removed.
 During the merge all existing fields get overridden too.
    
 ### S3    
