@@ -9,24 +9,24 @@ The result is a `dictionary` read from the JSON configuration.
 
 ## Basic usage
 
-Lambda: Description
+Set the `description` of your Lambda function to some valid JSON like
 ```JSON
 {"foo":"bar"}
 ```
-
+You can retrieve this data in your lambda function with
 ```python
 from aws_lambda_configurer import load_config
 
 def handler(event, context):
-  myConfig = load_config(Context=context)
-```  
+  my_config = load_config(Context=context)
+```
+The `my_config` variable is now set to the dictionary defined by the JSON.
   
 ## External configurations 
 
 Since the lambda-description is limited to 256 chars, this module supports resolving the config from external locations.
 To enable this, the configuration may contain a field `_lookup` which allows to define those lookups.
 Any external configuration will be merged with the default one and the `_lookup` field gets removed.
-During the merge all existing fields get overridden too.
    
 ### S3    
 
@@ -38,7 +38,7 @@ Configuration in S3 in bucket `my-bucket` as file `my-config.json`
 }
 ```
 
-Lambda: Description
+Set the `description` of your lambda to
 ```JSON
 {  
   "_lookup" : {
@@ -60,6 +60,7 @@ The final configuration will be
   "override": "2"
 }
 ```
+Notice that the `override` variable in the final config is "2", not "1". Values in the S3 bucket take precedence over those in the lambda function's description.
 
 ## Todo
 
