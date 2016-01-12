@@ -105,6 +105,36 @@ class ConfigAccessTests(unittest2.TestCase):
 
         self.assertIn('invalid_lookup_value', cm.exception.message)
 
+    @patch('aws_lambda_configurer.aws_lambda')
+    def test_raise_s3_lookup_missing_bucket(self, aws_lambda_mock):
+        aws_lambda_mock.get_function_configuration.return_value = {
+            'Description': json.dumps({
+                '_lookup': {
+                    's3': {
+                        'key': 'foo'
+                    }
+            }})
+        }
+        with self.assertRaises(Exception) as cm:
+            aws_lambda_configurer.load_config(Context=MockContext('function-arn-name', 'function-version'))
+
+        self.assertIn("config needs field 'bucket'" , cm.exception.message)
+
+    @patch('aws_lambda_configurer.aws_lambda')
+    def test_raise_s3_lookup_missing_key(self, aws_lambda_mock):
+        aws_lambda_mock.get_function_configuration.return_value = {
+            'Description': json.dumps({
+                '_lookup': {
+                    's3': {
+                        'bucket': 'bar'
+                    }
+            }})
+        }
+        with self.assertRaises(Exception) as cm:
+            aws_lambda_configurer.load_config(Context=MockContext('function-arn-name', 'function-version'))
+
+        self.assertIn("config needs field 'key'" , cm.exception.message)
+
 
 class MockContext:
     def __init__(self, invoked_function_arn, function_version):
