@@ -28,6 +28,11 @@ def _lookup(config):
     if lookup:
         if lookup.get('s3'):
             config.update(_lookup_s3(lookup.get('s3')))
+        else:
+            raise Exception(
+                "Invalid _lookup in config: {0}. Use 's3'".format(
+                    ", ".join(lookup.keys())))
+
         del config['_lookup']
 
     return config

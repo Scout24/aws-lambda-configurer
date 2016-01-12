@@ -92,6 +92,19 @@ class ConfigAccessTests(unittest2.TestCase):
 
         self.assertEqual("Keyword argument 'Context' missing", cm.exception.message)
 
+    @patch('aws_lambda_configurer.aws_lambda')
+    def test_raise_invalid_lookup(self, aws_lambda_mock):
+        aws_lambda_mock.get_function_configuration.return_value = {
+            'Description': json.dumps({
+                '_lookup': {
+                    'invalid_lookup_value': {}
+            }})
+        }
+        with self.assertRaises(Exception) as cm:
+            aws_lambda_configurer.load_config(Context=MockContext('function-arn-name', 'function-version'))
+
+        self.assertIn('invalid_lookup_value', cm.exception.message)
+
 
 class MockContext:
     def __init__(self, invoked_function_arn, function_version):
