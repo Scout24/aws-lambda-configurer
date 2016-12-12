@@ -1,6 +1,9 @@
 [![Build Status](https://travis-ci.org/ImmobilienScout24/aws-lambda-configurer.svg?branch=master)](https://travis-ci.org/ImmobilienScout24/aws-lambda-configurer)
 [![Coverage Status](https://coveralls.io/repos/ImmobilienScout24/aws-lambda-configurer/badge.svg?branch=master&service=github)](https://coveralls.io/github/ImmobilienScout24/aws-lambda-configurer?branch=master)
 
+# Deprecated
+Since AWS lamda now supports environment variables this pacakge is obsolete. see http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-function.html#cfn-lambda-function-environment 
+
 # aws-lambda-configurer
 
 This package allows to configure an AWS lambda function by JSON specified in the `description` of the lambda function.
